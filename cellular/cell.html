@@ -1,53 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Cellular Automata</title>
-		<link href="../css/master.css" rel="stylesheet" />
-		<script src="cell.js" defer></script>
-		<script src="../canvas/canvas.js" defer></script>
-		<!-- Seeded Random from davidbau's github -->
-		<script src="//cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"></script>
+		<style>
+			body{
+				background-image: url("twerk.gif");
+			}
+		</style>
 	</head>
 	<body>
-		<div class="centered" style="flex-direction: column">
-			<canvas id="preview" width="500px" height="500px"></canvas>
-			<div class="flexrow">
-				<div class="centered">
-					<p>Pixel Size:</p>
-					<input type="number" id="pixelSize" value="5" min="1" />
-				</div>
-
-				<div class="centered">
-					<p>Fill percent (<span id="fillValue"></span>):</p>
-					<input
-						type="range"
-						id="fillSize"
-						value="50"
-						min="1"
-						max="100"
-						oninput="displayFillValue()"
-					/>
-				</div>
-
-				<div class="centered">
-					<p>Seed:</p>
-					<input id="seed" type="text" placeholder="Seed for randomness" />
-				</div>
-
-					<form class="my-form centered	">
-					<div>
-						<input id="randomSeed" type="checkbox" checked="true"/>
-						<label for="randomSeed">Random Seed</label>
-					  </div>
-					</form>
-			</div>
-			<button id="generate" onclick="Generate()">Generate!</button>
-			<div class="hidden centered" id="smoothGroup">
-				<p>Smooth Level (<span id="smoothLevel">0</span>):</p>
-				<button onclick="SmoothButton()">Smooth!</button>
-			</div>
-		</div>
 	</body>
 </html>
