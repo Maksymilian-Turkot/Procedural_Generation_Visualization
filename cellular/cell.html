@@ -6,6 +6,7 @@
 		<title>Cellular Automata</title>
 		<link href="../css/master.css" rel="stylesheet" />
 		<script src="cell.js" defer></script>
+		<script src="../canvas/canvas.js" defer></script>
 		<!-- Seeded Random from davidbau's github -->
 		<script src="//cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"></script>
 	</head>
@@ -35,13 +36,15 @@
 					<input id="seed" type="text" placeholder="Seed for randomness" />
 				</div>
 
-				<div class="centered">
-					<p>Random seed:</p>
-					<input id="randomSeed" type="checkbox" checked="true" />
-				</div>
+					<form class="my-form centered	">
+					<div>
+						<input id="randomSeed" type="checkbox" checked="true"/>
+						<label for="randomSeed">Random Seed</label>
+					  </div>
+					</form>
 			</div>
 			<button id="generate" onclick="Generate()">Generate!</button>
-			<div class="hidden" id="smoothGroup">
+			<div class="hidden centered" id="smoothGroup">
 				<p>Smooth Level (<span id="smoothLevel">0</span>):</p>
 				<button onclick="SmoothButton()">Smooth!</button>
 			</div>
