@@ -1,0 +1,22 @@
+.centered {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#preview {
+    border: 1px solid #444;
+}
+
+.flexrow {
+    display: flex;
+}
+
+.flexrow > div {
+    margin: 0px 1em 2em 0em;
+}
+
+.hidden {
+    visibility: hidden;
+}
