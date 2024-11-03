@@ -7,6 +7,15 @@ function drawFrom2dArray(ctx, localGrid) {
 	}
 }
 
+function drawCell(ctx, x, y, pixelSize, color) {
+	ctx.fillStyle = color;
+	ctx.fillRect(x * pixelSize, y * pixelSize, pixelSize, pixelSize);
+}
+
+function freeHandCell(x, y) {
+	drawCell(ctx, x, y, pixelSize, "#f11d1d");
+}
+
 function clear() {
 	ctx.clear();
 }

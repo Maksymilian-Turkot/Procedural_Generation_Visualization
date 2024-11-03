@@ -6,20 +6,6 @@ let seed_Element;
 let randomSeed_Element;
 let fillValue_Element;
 
-// Arrays used for Canvas
-let invert = false;
-let grid = [];
-let calculatedGrid = [];
-
-// Variables
-let pixelSize;
-let width;
-let height;
-let random;
-let seed;
-let ctx;
-let smoothlevel = 0;
-
 addEventListener("load", () => {
 	console.log("Ran!");
 	Canvas_Element = document.getElementById("preview");
@@ -30,10 +16,6 @@ addEventListener("load", () => {
 	fillValue_Element = document.getElementById("fillValue");
 	displayFillValue();
 });
-
-function displayFillValue() {
-	fillValue_Element.textContent = fillChance_Element.value;
-}
 
 function Generate() {
 	reset();
@@ -55,55 +37,32 @@ function Generate() {
 	document.getElementById("smoothGroup").classList.remove("hidden");
 }
 
-function randomFillGrid() {
-	for (let x = 0; x < width; x++) {
-		grid[x] = [];
-		calculatedGrid[x] = [];
-		for (let y = 0; y < height; y++) {
-			grid[x][y] = Math.floor(random.quick() * 102 - 1) < fillChance_Element.value ? 1 : 0;
-		}
-	}
+function displayFillValue() {
+	fillValue_Element.textContent = fillChance_Element.value;
 }
 
 function SmoothButton() {
 	if (invert) {
 		smooth(calculatedGrid, grid);
 		drawFrom2dArray(ctx, grid);
+		updatedGrid = grid;
 	} else {
 		smooth(grid, calculatedGrid);
 		drawFrom2dArray(ctx, calculatedGrid);
+		updatedGrid = calculatedGrid;
 	}
 	invert = !invert;
 	smoothlevel++;
 	document.getElementById("smoothLevel").textContent = smoothlevel;
 }
 
-function smooth(localGrid, savedToGrid) {
-	for (let x = 0; x < width; x++) {
-		for (let y = 0; y < height; y++) {
-			savedToGrid[x][y] = getSurroundingTiles(localGrid, x, y) <= 4 ? 1 : 0;
-		}
-	}
-}
-
-function getSurroundingTiles(localGrid, gridX, gridY) {
-	let wallCount = 0;
-	for (let gridRow = gridX - 1; gridRow <= gridX + 1; gridRow++) {
-		for (let gridColumn = gridY - 1; gridColumn <= gridY + 1; gridColumn++) {
-			if (gridRow < 0 || gridRow > width - 1 || gridColumn < 0 || gridColumn > height - 1) {
-				wallCount += 2;
-			} else {
-				if (localGrid[gridRow][gridColumn] == 0) {
-					wallCount++;
-				}
-			}
-		}
-	}
-	return wallCount;
-}
-
 function reset() {
 	smoothlevel = 0;
+	lastRoomCheckPosition = 0;
+	roomsFilled = 0;
+	roomCount = 0;
+	roomMinSize = 6;
+	rooms = [];
 	grid = [];
 	calculatedGrid = [];
 	invert = false;
