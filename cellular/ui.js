@@ -56,6 +56,11 @@ function SmoothButton() {
 	document.getElementById("smoothLevel").textContent = smoothlevel;
 }
 
+function findRooms() {
+    document.getElementById("smoothButton").classList.add("hidden");
+    findAndFillAllRooms()
+}
+
 function reset() {
 	smoothlevel = 0;
 	lastRoomCheckPosition = 0;
@@ -66,5 +71,7 @@ function reset() {
 	grid = [];
 	calculatedGrid = [];
 	invert = false;
+    document.getElementById("smoothButton").classList.remove("hidden");
+    document.getElementById("findRoomButton").classList.remove("hidden");
 	document.getElementById("smoothLevel").textContent = smoothlevel;
 }

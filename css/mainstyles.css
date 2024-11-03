@@ -8,6 +8,10 @@ p {
 	margin-bottom: 6px;
 }
 
+#smoothGroup > button {
+margin-top: 1em;
+}
+
 .centered {
 	display: flex;
 	justify-content: center;
