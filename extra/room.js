@@ -1,6 +1,7 @@
 let roomCount = 0;
 let roomMinSize = 6;
 let rooms = [];
+let colors = ["#592321", "#955F20", "#1E5945", "#252850", "#F75E25", "#1B5583", "#025669", "#E63244", "#382C1E" ];
 class Room {
 	constructor() {
 		rooms[roomCount] = this;
@@ -18,11 +19,7 @@ class Room {
 
 	updatePercent() {
 		this.pro = (this.tiles / (width * height)) * 100;
-		if (Math.round(this.pro) < 6) {
-			this.delete(calculatedGrid, 0);
-			roomCount--;
-			drawFrom2dArray(ctx, calculatedGrid);
-		}
+		
 	}
 
 	drawRoom(ctx, pixelSize, color) {
@@ -40,7 +37,8 @@ class Room {
 
 function drawAllRooms() {
 	for (let i = 0; i < rooms.length; i++) {
-		rooms[i].drawRoom(ctx, pixelSize, "#127acf");
+		let color = colors[Math.floor(Math.random() * colors.length)]
+		rooms[i].drawRoom(ctx, pixelSize, color);
 	}
 }
 
@@ -89,3 +87,14 @@ function floodFill(grid, room, x, y) {
 	floodFill(grid, room, x - 1, y);
 	floodFill(grid, room, x, y - 1);
 }
+
+function updateRoomSize() {
+	for (let i = 0; i < rooms.length; i++) {
+		rooms[i].updatePercent();
+	}
+}
+
+function sortRoomsBySize() {
+	rooms.sort((room1, room2) =>  room2.pro - room1.pro)
+}
+

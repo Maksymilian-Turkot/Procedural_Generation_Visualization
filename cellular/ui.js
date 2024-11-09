@@ -58,7 +58,10 @@ function SmoothButton() {
 
 function findRooms() {
     document.getElementById("smoothButton").classList.add("hidden");
-    findAndFillAllRooms()
+    findAndFillAllRooms();
+	drawAllRooms();
+	updateRoomSize();
+	sortRoomsBySize();
 }
 
 function reset() {

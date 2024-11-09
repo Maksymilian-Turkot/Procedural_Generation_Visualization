@@ -25,10 +25,27 @@ margin-top: 1em;
 
 .flexrow {
 	display: flex;
+	border: 1px solid #444;
+	padding-left: 1em;
+	margin: 1em 0em;
+}
+.flexrow > *  {
+	margin: 0px 1em 1em 0em;
 }
 
-.flexrow > div {
-	margin: 0px 1em 2em 0em;
+@media (orientation: portrait) {
+.flexrow {
+	flex-direction: column;
+	padding: 0px 1em; 
+	
+}
+.flexrow > * {
+	margin: 0px 0px 1em 0px;
+}
+}
+
+.my-form {
+	margin: 1em 1em 0.5em 0px;
 }
 
 .hidden {
