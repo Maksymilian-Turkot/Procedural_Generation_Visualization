@@ -54,10 +54,11 @@ function SmoothButton() {
 	invert = !invert;
 	smoothlevel++;
 	document.getElementById("smoothLevel").textContent = smoothlevel;
+	document.getElementById("rooms").classList.remove("hidden")
 }
 
 function findRooms() {
-    document.getElementById("smoothButton").classList.add("hidden");
+    document.getElementById("smoothGroup").classList.add("hidden");
     findAndFillAllRooms();
 	drawAllRooms();
 	updateRoomSize();

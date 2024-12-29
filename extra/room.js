@@ -28,14 +28,18 @@ class Room {
 		}
 	}
 
-	delete(grid, value = 0) {
+	delete(value = 0) {
 		for (let i = 0; i < this.room.length; i++) {
 			updatedGrid[this.room[i][0]][this.room[i][1]] = value;
 		}
+		console.log(`Deleting Room ${this.roomNumber}`)
+		rooms[this.roomNumber - 1] = undefined;
+		roomCount--;
 	}
 }
 
 function drawAllRooms() {
+	clearCanvas()
 	for (let i = 0; i < rooms.length; i++) {
 		let color = colors[Math.floor(Math.random() * colors.length)]
 		rooms[i].drawRoom(ctx, pixelSize, color);
@@ -96,5 +100,19 @@ function updateRoomSize() {
 
 function sortRoomsBySize() {
 	rooms.sort((room1, room2) =>  room2.pro - room1.pro)
+	roomCount = 1;
+	rooms.forEach((room) => 
+	{
+		room.roomNumber = roomCount;
+		roomCount++;
+	})
 }
 
+function filterSmallRooms(Size) {
+	roomsToDelete = rooms.filter((room) => room.pro < Size )
+	console.log(`Filter Deleted: ${roomsToDelete} Rooms!`)
+	for (let i = roomsToDelete.length - 1; i >= 0; i--) {
+		roomsToDelete[i].delete()
+	}
+	rooms = rooms.filter((room) => room != undefined)
+}

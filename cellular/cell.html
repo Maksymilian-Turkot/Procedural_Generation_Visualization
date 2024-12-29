@@ -9,6 +9,7 @@
 		<script src="ui.js" defer></script>
 		<script src="../extra/canvas.js" defer></script>
 		<script src="../extra/room.js" defer></script>
+		<script src="../extra/export.js" defer></script>
 		<!-- Seeded Random from davidbau's github -->
 		<script src="//cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"></script>
 	</head>
@@ -49,6 +50,8 @@
 			<div class="hidden centered" id="smoothGroup">
 				<p>Smooth Level (<span id="smoothLevel">0</span>):</p>
 				<button id="smoothButton" onclick="SmoothButton()">Smooth!</button>
+			</div>
+			<div class="hidden centered" id="rooms">
 				<button id="findRoomButton" onclick="findRooms()">Find Rooms!</button>
 			</div>
 		</div>

@@ -8,6 +8,10 @@ p {
 	margin-bottom: 6px;
 }
 
+#smoothGroup {
+	margin-bottom: 1em;
+}
+
 #smoothGroup > button {
 margin-top: 1em;
 }

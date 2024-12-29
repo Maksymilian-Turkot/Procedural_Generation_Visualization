@@ -16,6 +16,9 @@ function freeHandCell(x, y) {
 	drawCell(ctx, x, y, pixelSize, "#f11d1d");
 }
 
-function clear() {
-	ctx.clear();
+function clearCanvas() {
+	let beforeColor = ctx.fillStyle;
+	ctx.fillStyle = "#000"
+	ctx.fillRect(0,0, Canvas_Element.width, Canvas_Element.height)
+	ctx.fillStyle = beforeColor;
 }
